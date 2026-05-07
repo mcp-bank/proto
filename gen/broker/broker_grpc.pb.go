@@ -4,7 +4,7 @@
 // - protoc             v7.34.0
 // source: broker/broker.proto
 
-package gen
+package broker
 
 import (
 	context "context"

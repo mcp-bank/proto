@@ -4,7 +4,7 @@
 // 	protoc        v7.34.0
 // source: broker/broker.proto
 
-package gen
+package broker
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -433,7 +433,7 @@ const file_broker_broker_proto_rawDesc = "" +
 	"\rBrokerService\x12I\n" +
 	"\fGetPortfolio\x12\x1b.broker.GetPortfolioRequest\x1a\x1c.broker.GetPortfolioResponse\x12L\n" +
 	"\rGetStockPrice\x12\x1c.broker.GetStockPriceRequest\x1a\x1d.broker.GetStockPriceResponse\x12X\n" +
-	"\x11GetAccountBalance\x12 .broker.GetAccountBalanceRequest\x1a!.broker.GetAccountBalanceResponseB\x1fZ\x1dgithub.com/mcp-bank/proto/genb\x06proto3"
+	"\x11GetAccountBalance\x12 .broker.GetAccountBalanceRequest\x1a!.broker.GetAccountBalanceResponseB&Z$github.com/mcp-bank/proto/gen/brokerb\x06proto3"
 
 var (
 	file_broker_broker_proto_rawDescOnce sync.Once
