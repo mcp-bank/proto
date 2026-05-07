@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.1
 // - protoc             v7.34.0
-// source: broker/broker.proto
+// source: brokerv1/brokerv1.proto
 
-package broker
+package brokerv1
 
 import (
 	context "context"
@@ -19,9 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	BrokerService_GetPortfolio_FullMethodName      = "/broker.BrokerService/GetPortfolio"
-	BrokerService_GetStockPrice_FullMethodName     = "/broker.BrokerService/GetStockPrice"
-	BrokerService_GetAccountBalance_FullMethodName = "/broker.BrokerService/GetAccountBalance"
+	BrokerService_GetPortfolio_FullMethodName      = "/brokerv1.BrokerService/GetPortfolio"
+	BrokerService_GetStockPrice_FullMethodName     = "/brokerv1.BrokerService/GetStockPrice"
+	BrokerService_GetAccountBalance_FullMethodName = "/brokerv1.BrokerService/GetAccountBalance"
 )
 
 // BrokerServiceClient is the client API for BrokerService service.
@@ -176,7 +176,7 @@ func _BrokerService_GetAccountBalance_Handler(srv interface{}, ctx context.Conte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var BrokerService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "broker.BrokerService",
+	ServiceName: "brokerv1.BrokerService",
 	HandlerType: (*BrokerServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -193,5 +193,5 @@ var BrokerService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "broker/broker.proto",
+	Metadata: "brokerv1/brokerv1.proto",
 }

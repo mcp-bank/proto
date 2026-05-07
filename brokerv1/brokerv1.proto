@@ -1,6 +1,6 @@
 syntax = "proto3";
-package broker;
-option go_package = "github.com/mcp-bank/proto/gen/broker";
+package brokerv1;
+option go_package = "github.com/mcp-bank/proto/gen/brokerv1";
 
 service BrokerService {
   rpc GetPortfolio(GetPortfolioRequest) returns (GetPortfolioResponse);
