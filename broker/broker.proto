@@ -1,0 +1,45 @@
+syntax = "proto3";
+package broker;
+option go_package = "github.com/mcp-bank/proto/gen";
+
+service BrokerService {
+  rpc GetPortfolio(GetPortfolioRequest) returns (GetPortfolioResponse);
+  rpc GetStockPrice(GetStockPriceRequest) returns (GetStockPriceResponse);
+  rpc GetAccountBalance(GetAccountBalanceRequest) returns (GetAccountBalanceResponse);
+}
+
+message GetPortfolioRequest {
+  string uuid = 1;
+}
+
+message GetPortfolioResponse {
+  repeated PortfolioPosition positions = 1;
+}
+
+message PortfolioPosition {
+  string name = 1;
+  string type = 2;
+  double quantity = 3;
+  Money price = 4;
+}
+
+message Money {
+  int64 amount = 1;
+  string currency = 2;
+}
+
+message GetStockPriceRequest {
+  string isin = 1;
+}
+
+message GetStockPriceResponse {
+  Money price = 1;
+}
+
+message GetAccountBalanceRequest {
+  string uuid = 1;
+}
+
+message GetAccountBalanceResponse {
+  Money balance = 1;
+}
