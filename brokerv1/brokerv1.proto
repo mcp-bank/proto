@@ -6,6 +6,7 @@ service BrokerService {
   rpc GetPortfolio(GetPortfolioRequest) returns (GetPortfolioResponse);
   rpc GetStockPrice(GetStockPriceRequest) returns (GetStockPriceResponse);
   rpc GetAccountBalance(GetAccountBalanceRequest) returns (GetAccountBalanceResponse);
+  rpc GetNews(GetNewsRequest) returns (GetNewsResponse);
 }
 
 message GetPortfolioRequest {
@@ -42,4 +43,18 @@ message GetAccountBalanceRequest {
 
 message GetAccountBalanceResponse {
   Money balance = 1;
+}
+
+message GetNewsRequest {
+  string isin = 1;
+}
+
+message GetNewsResponse {
+  repeated NewsItem items = 1;
+}
+
+message NewsItem {
+  string title = 1;
+  string summary = 2;
+  string url = 3;
 }

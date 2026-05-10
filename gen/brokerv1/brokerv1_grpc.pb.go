@@ -22,6 +22,7 @@ const (
 	BrokerService_GetPortfolio_FullMethodName      = "/brokerv1.BrokerService/GetPortfolio"
 	BrokerService_GetStockPrice_FullMethodName     = "/brokerv1.BrokerService/GetStockPrice"
 	BrokerService_GetAccountBalance_FullMethodName = "/brokerv1.BrokerService/GetAccountBalance"
+	BrokerService_GetNews_FullMethodName           = "/brokerv1.BrokerService/GetNews"
 )
 
 // BrokerServiceClient is the client API for BrokerService service.
@@ -31,6 +32,7 @@ type BrokerServiceClient interface {
 	GetPortfolio(ctx context.Context, in *GetPortfolioRequest, opts ...grpc.CallOption) (*GetPortfolioResponse, error)
 	GetStockPrice(ctx context.Context, in *GetStockPriceRequest, opts ...grpc.CallOption) (*GetStockPriceResponse, error)
 	GetAccountBalance(ctx context.Context, in *GetAccountBalanceRequest, opts ...grpc.CallOption) (*GetAccountBalanceResponse, error)
+	GetNews(ctx context.Context, in *GetNewsRequest, opts ...grpc.CallOption) (*GetNewsResponse, error)
 }
 
 type brokerServiceClient struct {
@@ -71,6 +73,16 @@ func (c *brokerServiceClient) GetAccountBalance(ctx context.Context, in *GetAcco
 	return out, nil
 }
 
+func (c *brokerServiceClient) GetNews(ctx context.Context, in *GetNewsRequest, opts ...grpc.CallOption) (*GetNewsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetNewsResponse)
+	err := c.cc.Invoke(ctx, BrokerService_GetNews_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BrokerServiceServer is the server API for BrokerService service.
 // All implementations must embed UnimplementedBrokerServiceServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type BrokerServiceServer interface {
 	GetPortfolio(context.Context, *GetPortfolioRequest) (*GetPortfolioResponse, error)
 	GetStockPrice(context.Context, *GetStockPriceRequest) (*GetStockPriceResponse, error)
 	GetAccountBalance(context.Context, *GetAccountBalanceRequest) (*GetAccountBalanceResponse, error)
+	GetNews(context.Context, *GetNewsRequest) (*GetNewsResponse, error)
 	mustEmbedUnimplementedBrokerServiceServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedBrokerServiceServer) GetStockPrice(context.Context, *GetStock
 }
 func (UnimplementedBrokerServiceServer) GetAccountBalance(context.Context, *GetAccountBalanceRequest) (*GetAccountBalanceResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetAccountBalance not implemented")
+}
+func (UnimplementedBrokerServiceServer) GetNews(context.Context, *GetNewsRequest) (*GetNewsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetNews not implemented")
 }
 func (UnimplementedBrokerServiceServer) mustEmbedUnimplementedBrokerServiceServer() {}
 func (UnimplementedBrokerServiceServer) testEmbeddedByValue()                       {}
@@ -172,6 +188,24 @@ func _BrokerService_GetAccountBalance_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BrokerService_GetNews_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetNewsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BrokerServiceServer).GetNews(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BrokerService_GetNews_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BrokerServiceServer).GetNews(ctx, req.(*GetNewsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // BrokerService_ServiceDesc is the grpc.ServiceDesc for BrokerService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +224,10 @@ var BrokerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAccountBalance",
 			Handler:    _BrokerService_GetAccountBalance_Handler,
+		},
+		{
+			MethodName: "GetNews",
+			Handler:    _BrokerService_GetNews_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

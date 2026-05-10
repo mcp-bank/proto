@@ -405,6 +405,154 @@ func (x *GetAccountBalanceResponse) GetBalance() *Money {
 	return nil
 }
 
+type GetNewsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Isin          string                 `protobuf:"bytes,1,opt,name=isin,proto3" json:"isin,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetNewsRequest) Reset() {
+	*x = GetNewsRequest{}
+	mi := &file_brokerv1_brokerv1_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetNewsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetNewsRequest) ProtoMessage() {}
+
+func (x *GetNewsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_brokerv1_brokerv1_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetNewsRequest.ProtoReflect.Descriptor instead.
+func (*GetNewsRequest) Descriptor() ([]byte, []int) {
+	return file_brokerv1_brokerv1_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetNewsRequest) GetIsin() string {
+	if x != nil {
+		return x.Isin
+	}
+	return ""
+}
+
+type GetNewsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Items         []*NewsItem            `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetNewsResponse) Reset() {
+	*x = GetNewsResponse{}
+	mi := &file_brokerv1_brokerv1_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetNewsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetNewsResponse) ProtoMessage() {}
+
+func (x *GetNewsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_brokerv1_brokerv1_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetNewsResponse.ProtoReflect.Descriptor instead.
+func (*GetNewsResponse) Descriptor() ([]byte, []int) {
+	return file_brokerv1_brokerv1_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetNewsResponse) GetItems() []*NewsItem {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+type NewsItem struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Summary       string                 `protobuf:"bytes,2,opt,name=summary,proto3" json:"summary,omitempty"`
+	Url           string                 `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NewsItem) Reset() {
+	*x = NewsItem{}
+	mi := &file_brokerv1_brokerv1_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NewsItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NewsItem) ProtoMessage() {}
+
+func (x *NewsItem) ProtoReflect() protoreflect.Message {
+	mi := &file_brokerv1_brokerv1_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NewsItem.ProtoReflect.Descriptor instead.
+func (*NewsItem) Descriptor() ([]byte, []int) {
+	return file_brokerv1_brokerv1_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *NewsItem) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *NewsItem) GetSummary() string {
+	if x != nil {
+		return x.Summary
+	}
+	return ""
+}
+
+func (x *NewsItem) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
 var File_brokerv1_brokerv1_proto protoreflect.FileDescriptor
 
 const file_brokerv1_brokerv1_proto_rawDesc = "" +
@@ -429,11 +577,20 @@ const file_brokerv1_brokerv1_proto_rawDesc = "" +
 	"\x18GetAccountBalanceRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\"F\n" +
 	"\x19GetAccountBalanceResponse\x12)\n" +
-	"\abalance\x18\x01 \x01(\v2\x0f.brokerv1.MoneyR\abalance2\x8e\x02\n" +
+	"\abalance\x18\x01 \x01(\v2\x0f.brokerv1.MoneyR\abalance\"$\n" +
+	"\x0eGetNewsRequest\x12\x12\n" +
+	"\x04isin\x18\x01 \x01(\tR\x04isin\";\n" +
+	"\x0fGetNewsResponse\x12(\n" +
+	"\x05items\x18\x01 \x03(\v2\x12.brokerv1.NewsItemR\x05items\"L\n" +
+	"\bNewsItem\x12\x14\n" +
+	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
+	"\asummary\x18\x02 \x01(\tR\asummary\x12\x10\n" +
+	"\x03url\x18\x03 \x01(\tR\x03url2\xce\x02\n" +
 	"\rBrokerService\x12M\n" +
 	"\fGetPortfolio\x12\x1d.brokerv1.GetPortfolioRequest\x1a\x1e.brokerv1.GetPortfolioResponse\x12P\n" +
 	"\rGetStockPrice\x12\x1e.brokerv1.GetStockPriceRequest\x1a\x1f.brokerv1.GetStockPriceResponse\x12\\\n" +
-	"\x11GetAccountBalance\x12\".brokerv1.GetAccountBalanceRequest\x1a#.brokerv1.GetAccountBalanceResponseB(Z&github.com/mcp-bank/proto/gen/brokerv1b\x06proto3"
+	"\x11GetAccountBalance\x12\".brokerv1.GetAccountBalanceRequest\x1a#.brokerv1.GetAccountBalanceResponse\x12>\n" +
+	"\aGetNews\x12\x18.brokerv1.GetNewsRequest\x1a\x19.brokerv1.GetNewsResponseB(Z&github.com/mcp-bank/proto/gen/brokerv1b\x06proto3"
 
 var (
 	file_brokerv1_brokerv1_proto_rawDescOnce sync.Once
@@ -447,7 +604,7 @@ func file_brokerv1_brokerv1_proto_rawDescGZIP() []byte {
 	return file_brokerv1_brokerv1_proto_rawDescData
 }
 
-var file_brokerv1_brokerv1_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_brokerv1_brokerv1_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_brokerv1_brokerv1_proto_goTypes = []any{
 	(*GetPortfolioRequest)(nil),       // 0: brokerv1.GetPortfolioRequest
 	(*GetPortfolioResponse)(nil),      // 1: brokerv1.GetPortfolioResponse
@@ -457,23 +614,29 @@ var file_brokerv1_brokerv1_proto_goTypes = []any{
 	(*GetStockPriceResponse)(nil),     // 5: brokerv1.GetStockPriceResponse
 	(*GetAccountBalanceRequest)(nil),  // 6: brokerv1.GetAccountBalanceRequest
 	(*GetAccountBalanceResponse)(nil), // 7: brokerv1.GetAccountBalanceResponse
+	(*GetNewsRequest)(nil),            // 8: brokerv1.GetNewsRequest
+	(*GetNewsResponse)(nil),           // 9: brokerv1.GetNewsResponse
+	(*NewsItem)(nil),                  // 10: brokerv1.NewsItem
 }
 var file_brokerv1_brokerv1_proto_depIdxs = []int32{
-	2, // 0: brokerv1.GetPortfolioResponse.positions:type_name -> brokerv1.PortfolioPosition
-	3, // 1: brokerv1.PortfolioPosition.price:type_name -> brokerv1.Money
-	3, // 2: brokerv1.GetStockPriceResponse.price:type_name -> brokerv1.Money
-	3, // 3: brokerv1.GetAccountBalanceResponse.balance:type_name -> brokerv1.Money
-	0, // 4: brokerv1.BrokerService.GetPortfolio:input_type -> brokerv1.GetPortfolioRequest
-	4, // 5: brokerv1.BrokerService.GetStockPrice:input_type -> brokerv1.GetStockPriceRequest
-	6, // 6: brokerv1.BrokerService.GetAccountBalance:input_type -> brokerv1.GetAccountBalanceRequest
-	1, // 7: brokerv1.BrokerService.GetPortfolio:output_type -> brokerv1.GetPortfolioResponse
-	5, // 8: brokerv1.BrokerService.GetStockPrice:output_type -> brokerv1.GetStockPriceResponse
-	7, // 9: brokerv1.BrokerService.GetAccountBalance:output_type -> brokerv1.GetAccountBalanceResponse
-	7, // [7:10] is the sub-list for method output_type
-	4, // [4:7] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	2,  // 0: brokerv1.GetPortfolioResponse.positions:type_name -> brokerv1.PortfolioPosition
+	3,  // 1: brokerv1.PortfolioPosition.price:type_name -> brokerv1.Money
+	3,  // 2: brokerv1.GetStockPriceResponse.price:type_name -> brokerv1.Money
+	3,  // 3: brokerv1.GetAccountBalanceResponse.balance:type_name -> brokerv1.Money
+	10, // 4: brokerv1.GetNewsResponse.items:type_name -> brokerv1.NewsItem
+	0,  // 5: brokerv1.BrokerService.GetPortfolio:input_type -> brokerv1.GetPortfolioRequest
+	4,  // 6: brokerv1.BrokerService.GetStockPrice:input_type -> brokerv1.GetStockPriceRequest
+	6,  // 7: brokerv1.BrokerService.GetAccountBalance:input_type -> brokerv1.GetAccountBalanceRequest
+	8,  // 8: brokerv1.BrokerService.GetNews:input_type -> brokerv1.GetNewsRequest
+	1,  // 9: brokerv1.BrokerService.GetPortfolio:output_type -> brokerv1.GetPortfolioResponse
+	5,  // 10: brokerv1.BrokerService.GetStockPrice:output_type -> brokerv1.GetStockPriceResponse
+	7,  // 11: brokerv1.BrokerService.GetAccountBalance:output_type -> brokerv1.GetAccountBalanceResponse
+	9,  // 12: brokerv1.BrokerService.GetNews:output_type -> brokerv1.GetNewsResponse
+	9,  // [9:13] is the sub-list for method output_type
+	5,  // [5:9] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_brokerv1_brokerv1_proto_init() }
@@ -487,7 +650,7 @@ func file_brokerv1_brokerv1_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_brokerv1_brokerv1_proto_rawDesc), len(file_brokerv1_brokerv1_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
